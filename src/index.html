@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Bucles en JavaScript</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        button:hover {
+            background-color: #2980b9;
+        }
+    
+        p {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+            color: #27ae60; 
+
+        }
+        .error {
+            color: #e74c3c; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Suma y Promedio de un Arreglo</h2>
+    <label for="numeros">Ingrese números separados por comas:</label>
+    <input type="text" id="numeros">
+    <button onclick="calcularSumaYPromedio()">Calcular</button>
+    <p id="resultadoSuma"></p>
+    <p id="resultadoPromedio"></p>
+
+    <h2>Solicitar un Número Positivo</h2>
+    <label for="numeroPositivo">Ingrese un número positivo:</label>
+    <input type="number" id="numeroPositivo">
+    <button onclick="pedirNumero()">Ingresar</button>
+    <p id="resultadoNumero"></p>
+
+    <h2>Validación de Contraseña</h2>
+    <label for="contraseña">Ingrese la contraseña:</label>
+    <input type="password" id="contraseña">
+    <br> <br>
+    <button onclick="validarContraseña()">Ingresar</button>
+    <p id="resultadoContraseña"></p>
+
+    <script>
+        // Ejemplo 1: Calcular Suma y Promedio de un Arreglo
+        function calcularSumaYPromedio() {
+            const input = document.getElementById("numeros").value;
+            const numeros = input.split(',').map(Number);
+
+            let sumaTotal = 0;
+            numeros.forEach(numero => sumaTotal += numero);
+
+            const promedio = sumaTotal / numeros.length;
+
+            document.getElementById("resultadoSuma").textContent = "Suma total: " + sumaTotal;
+            document.getElementById("resultadoPromedio").textContent = "Promedio: " + promedio;
+        }
+
+        function pedirNumero() {
+            const numeroPositivoInput = document.getElementById("numeroPositivo");
+            let numero = parseInt(numeroPositivoInput.value);
+
+            if (numero >= 0) {
+                document.getElementById("resultadoNumero").textContent = "Número ingresado: " + numero;
+
+            } else {
+                document.getElementById("resultadoNumero").textContent = "Saliste del bucle al ingresar un número negativo.";
+            }
+        }
+
+        function validarContraseña() {
+            const contraseñaCorrecta = "2467";
+            const contraseñaIngresada = document.getElementById("contraseña").value;
+
+            if (contraseñaIngresada === contraseñaCorrecta) {
+                document.getElementById("resultadoContraseña").textContent = "¡Contraseña correcta!";
+            } else {
+                document.getElementById("resultadoContraseña").textContent = "Contraseña incorrecta. Intente de nuevo.";
+            }
+            document.getElementById("contraseña").value = ""; 
+        }
+    </script>
+
+</body>
+</html>
